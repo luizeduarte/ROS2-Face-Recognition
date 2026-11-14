@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    container: ros:jazzy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          apt-get update
+          rosdep update --rosdistro jazzy
+          rosdep install --from-paths src --ignore-src -y --rosdistro jazzy
+          apt-get install -y python3-pytest python3-opencv
+      - name: Build
+        run: . /opt/ros/jazzy/setup.sh && colcon build --event-handlers console_direct+
+      - name: Test
+        run: . /opt/ros/jazzy/setup.sh && . install/setup.sh && python3 -m pytest src/face_recognition_ros/test -v

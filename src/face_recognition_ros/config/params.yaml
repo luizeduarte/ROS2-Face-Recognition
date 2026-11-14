@@ -1,0 +1,16 @@
+# Parameters for the face recognition pipeline (see launch/face_recognition.launch.py).
+/**:
+  face_detection:
+    ros__parameters:
+      model_path: ""          # empty = download YuNet to ~/.cache/face_recognition_ros
+      score_threshold: 0.8    # minimum detector confidence
+
+  face_embedding:
+    ros__parameters:
+      model_path: ""          # empty = download SFace to ~/.cache/face_recognition_ros
+
+  face_recognition:
+    ros__parameters:
+      library_path: "~/.local/share/face_recognition_ros/library.npz"
+      similarity_threshold: 0.363   # cosine similarity; raise to reduce false matches
+      max_enroll_age_sec: 1.0

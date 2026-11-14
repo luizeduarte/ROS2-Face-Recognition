@@ -1,0 +1,22 @@
+# colcon
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Runtime data: face libraries contain biometric data, never commit them
+*.npz
+*.npy
+*.pkl
+*.onnx
+
+.vscode/
+.idea/
+.DS_Store

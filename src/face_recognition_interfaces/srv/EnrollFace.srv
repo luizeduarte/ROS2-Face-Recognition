@@ -1,0 +1,6 @@
+# Enroll the face in the most recent frame under the given label.
+# Fails if that frame is stale or does not contain exactly one face.
+string label
+---
+bool success
+string message
